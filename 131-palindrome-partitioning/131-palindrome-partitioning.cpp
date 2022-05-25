@@ -6,7 +6,7 @@ public:
            }
         return true;
     }
-    void helper(string s, int idx, vector<string> helperAns, vector<vector<string>> &ans){
+    void helper(string s, int idx, vector<string> &helperAns, vector<vector<string>> &ans){
         // base case
         if(idx == s.size()){
             ans.push_back(helperAns);
