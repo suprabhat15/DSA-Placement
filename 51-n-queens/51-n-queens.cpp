@@ -8,14 +8,14 @@ public:
             if(board[tempRow--][tempCol] == 'Q') return false;
         }
         
-        // top diagonal(row--, col++)
+        // top right diagonal(row--, col++)
         tempRow = row;
         tempCol = col;
         while(tempRow>=0 && tempCol < n){
             if(board[tempRow--][tempCol++] == 'Q') return false;
         }
         
-        // left diagonal(row--, col--)
+        // top left diagonal(row--, col--)
         tempRow = row;
         tempCol = col;
         while(tempRow >= 0 && tempCol >= 0){
