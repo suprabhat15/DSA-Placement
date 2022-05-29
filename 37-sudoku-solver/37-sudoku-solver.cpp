@@ -19,23 +19,46 @@ public:
     }
     
     bool solve(vector<vector<char>>& board){
-        for(int i=0;i<9;i++){
-            for(int j=0;j<9;j++){
-                if(board[i][j] == '.'){
-                    for(char ch='1';ch<='9';ch++){
-                        if(isValid(board, i, j, ch)){
-                            board[i][j]=ch;
-                            if(solve(board)== true){
-                                return true;
-                            }
-                            board[i][j]='.';
+//         for(int i=0;i<9;i++){
+//             for(int j=0;j<9;j++){
+//                 if(board[i][j] == '.'){
+//                     for(char ch='1';ch<='9';ch++){
+//                         if(isValid(board, i, j, ch)){
+//                             board[i][j]=ch;
+//                             if(solve(board)== true){
+//                                 return true;
+//                             }
+//                             board[i][j]='.';
+//                         }
+//                     }
+//                     return false;
+//                 }
+//             }
+//         }
+//         return true;
+        
+        for(int i=0; i<9; i++){ //loop whole matrix
+        
+        for(int j=0; j<9; j++){
+            
+            if(board[i][j]=='.'){ //check for empty space
+                
+                for(char ch='1'; ch<='9'; ch++){ // NOTE: using char for iteration
+                    if(check(board, i, j, ch)){ // if valid to place
+                        board[i][j]=ch; // place
+                        if(solve(board)){  // check for board status after placement
+                            return true;
                         }
+                        board[i][j]='.'; // if placement is incorrect replace with empty
                     }
-                    return false;
                 }
+                
+                return false; // if not able to update with suitable char
             }
         }
-        return true;
+    }
+    
+    return true;
     }
     void solveSudoku(vector<vector<char>>& board) {
         solve(board);
