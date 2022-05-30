@@ -7,6 +7,7 @@ using namespace std;
 // Function to determine if graph can be coloured with at most M colours such
 // that no two adjacent vertices of graph are coloured with same colour.
 
+// TC - there are N places to fill with M choices for each, so wouldn't M be multiplied N times 
 bool isValid(int node, int n, int col, bool graph[101][101], int* color){
     for(int i=0;i<n;i++){
         if((i!= node) && graph[node][i] == 1 && color[i] == col) return false;
