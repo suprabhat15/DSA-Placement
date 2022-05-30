@@ -21,25 +21,25 @@ class Solution{
         
         //Down
         if(r+1<n && !vis[r+1][c] && m[r+1][c] == 1){
-            vis[r][c]=1;
+            vis[r][c]=1;   // vis[r][c] shud be here not vis[r+1][c].
             solve(r+1, c, n, m, path+'D', ans, vis);
             vis[r][c]=0;
         }
         //Left
         if(c-1>=0 && !vis[r][c-1] && m[r][c-1] == 1){
-            vis[r][c]=1;
+            vis[r][c]=1;    // vis[r][c] shud be here not vis[r][c-1].
             solve(r, c-1, n, m, path+'L', ans, vis);
             vis[r][c]=0;
         }
         //Right
         if(c+1<n && !vis[r][c+1] && m[r][c+1] == 1){
-            vis[r][c]=1;
+            vis[r][c]=1;    // vis[r][c] shud be here not vis[r][c+1].
             solve(r, c+1, n, m, path+'R', ans, vis);
             vis[r][c]=0;
         }
         //Up
         if(r-1>=0 && !vis[r-1][c] && m[r-1][c] == 1){
-            vis[r][c]=1;
+            vis[r][c]=1;     // vis[r][c] shud be here not vis[r-1][c].
             solve(r-1, c, n, m, path+'U', ans, vis);
             vis[r][c]=0;
         }
