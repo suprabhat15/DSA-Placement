@@ -7,6 +7,9 @@ using namespace std;
 
  // } Driver Code Ends
 // User function template for C++
+------------------------------------------------------------------------------------------------------------------------------------------
+ TC - 4^(n*n); // Every cell of n*n will have 4 options (D,L,R,U).
+ SC - O(n*n);
 
 class Solution{
     public:
