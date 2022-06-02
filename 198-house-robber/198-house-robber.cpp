@@ -1,4 +1,5 @@
-/*
+RECURSION + MEMOIZATION => TC = O(2^N), SC = O(N) + O(N) {Recursion Stack + dp array}
+---------------------------------------------------------------------------------
   class Solution {
 public:
     int solve(int idx, vector<int> nums, vector<int>& dp){
@@ -21,10 +22,11 @@ public:
         return dp[n-1];  // dp[4] means max money which can be robbed from [0,...,4] houses.
     }
 };
+-------------------------------------------------------------------------------------------------
+Using Tabulation method => TC = O(N), SC = O(N)
 
 class Solution {
 public:
-     // Using Tabulation method
     int rob(vector<int>& nums) {
         int n = nums.size();
         if(n == 1) return nums[0];
@@ -45,7 +47,9 @@ public:
 };
 
 */
-
+-------------------------------------------------------------------
+Space Optimization => TC = O(N), SC = O(1)
+  
 class Solution {
 public:
     int rob(vector<int>& nums) {
