@@ -42,3 +42,21 @@ int maximumNonAdjacentSum(vector<int> &nums){
     return dp[n-1];
 }
 -------------------------------------------------------------------------------------------------------------
+TC = O(N), SC = O(1);
+int maximumNonAdjacentSum(vector<int> &nums){
+    int n = nums.size();
+    int prev=nums[0];
+    int prev2 = 0, curr = 0;
+    
+    for(int i=1;i<n;i++){
+        int pick = nums[i];
+        if(i>1) pick += prev2;
+        int notPick = prev;
+        
+        curr = max(pick, notPick);
+        
+        prev2 = prev;
+        prev = curr;
+    }
+    return prev;
+}
