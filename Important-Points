@@ -1,3 +1,8 @@
-For subsequences problems, use "pick & not-pick" (RECURSION) => Recursion + Memoization => Tabulation (Use base cases of Recursion + Memoization for dp[0])
-=> Space Optimization(by using prev2, prev, curr).
 Recursion means to try every possible values.
+-------------------------------------------------------------
+RECURSION => Recursion + Memoization => Tabulation (Use base cases of Recursion + Memoization for dp[0]) => Space Optimization(by using prev2, prev, curr).
+-------------------------------------------------------------
+For subsequences problems, use "pick & not-pick" with recursion.
+-------------------------------------------------------------
+
+
