@@ -24,3 +24,27 @@ public:
         return solve(grid, row-1, col-1, dp);
     }
 };
+--------------------------------------------------------------------------------------------------------------
+Tabulation => TC - O(m*n), SC - O(m*n);
+class Solution {
+public:
+    int minPathSum(vector<vector<int>>& grid) {
+        int row = grid.size();
+        int col = grid[0].size();
+        vector<vector<int>> dp(row, vector<int>(col, -1));
+        
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(i == 0 && j == 0) dp[0][0] = grid[0][0];   // dp[i][j] denotes minimum path sum till ith row and jth column.
+                else{
+                    int up = 9999, left = 9999;
+                    if(i>0) up = dp[i-1][j];
+                    if(j>0) left = dp[i][j-1];
+                    
+                    dp[i][j] = grid[i][j] + min(up, left);
+                }
+            }
+        }
+        return dp[row-1][col-1];
+    }
+};
