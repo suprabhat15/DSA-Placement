@@ -1,3 +1,6 @@
+With Recursion => TC - O(2^(m*n)), SC - O((M-1)+(N-1));  // (M-1)+(N-1) is path length.
+With Recursion + Memoization => TC - O(m*n), SC - O((M-1)+(N-1)) + O(m*n) // Path Length + for using DP matrix.
+---------------------------------------------------------------------------------------------------------------
 class Solution {
 public:
     int solve(vector<vector<int>>& grid, int row, int col, vector<vector<int>>& dp){
