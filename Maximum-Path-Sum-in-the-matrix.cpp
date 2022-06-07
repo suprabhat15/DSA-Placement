@@ -7,7 +7,7 @@ int solve(int row, int col, vector<vector<int>> &matrix, vector<vector<int>>& dp
     if(row < 0 || col < 0 || col >= matrix[0].size()) return -1e8;
     if(row == 0) return matrix[0][col];
     
-    if(dp[row][col] != -1e8) return dp[row][col];
+    if(dp[row][col] != -1) return dp[row][col];
     
     int up = matrix[row][col] + solve(row-1, col, matrix, dp);
     int leftDiagonal = matrix[row][col] + solve(row-1, col-1, matrix, dp);
@@ -21,7 +21,7 @@ int getMaxPathSum(vector<vector<int>> &matrix)
     int col = matrix[0].size();
     
     int mx = -1e8;
-    vector<vector<int>> dp(row, vector<int>(col, -1e8));
+    vector<vector<int>> dp(row, vector<int>(col, -1));
     
     for(int j=0;j<col;j++){
         int ans = solve(row-1, j, matrix, dp);
