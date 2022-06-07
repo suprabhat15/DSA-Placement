@@ -1,6 +1,7 @@
+/*
 class Solution {
 public:
-int maxProduct(vector<int>& nums) {
+int maxProduct(vector& nums) {
 // declared ans to store the final max value till the iteraterd element of the array
 int ans = nums[0];
 // n is the size of the array
@@ -25,3 +26,22 @@ int imax = ans;
 };
 // Time Complexity: O(n)
 // Auxiliary Space: O(1)
+*/
+class Solution {
+public:
+    int maxProduct(vector<int>& arr) {
+        int n=arr.size();
+        int mx=arr[0];
+        int mn=arr[0];
+        int res=arr[0];
+        for(int i=1;i<n;i++){
+            if(arr[i]<0) swap(mx,mn);
+            
+            mx=max(arr[i],mx*arr[i]);
+            mn=min(arr[i],mn*arr[i]);
+            // cout<<mx<<" "<<mn<<endl;
+            res=max(res,mx);
+        }
+        return res;        
+    }
+   };
