@@ -1,22 +1,15 @@
 class Solution {
 public:
+    // this solution won't work. Best solution is nlogn.
     int lengthOfLIS(vector<int>& nums) {
-        int n = nums.size();
-        if(n==0)return 0;
-        vector<int> lis(nums.size(),1);
-        lis[0]=1;
-        for(int i=1;i<n;i++){
-            lis[i]=1;
-            for(int j=i-1;j>=0;j--){
-                if(nums[j] >= nums[i]) continue;
-                int possibleAns = lis[j] +1;
-                if(possibleAns > lis[i]) lis[i]=possibleAns;
+        vector<vector<int>> dp(nums.size()+1, vector<int>(nums.size()+1, 0)); // column of dp is n+1 because it will range from -1 to n-1;
+        for(int i=nums.size()-1;i>=0;i--){
+            for(int prev=i-1;prev>=-1;prev--){
+                 int len = dp[i+1][prev+1];
+                 if( prev == -1 || nums[prev] < nums[i]) len = max(len, 1 + dp[i+1][i+1]);
+                    dp[i][prev+1] = len;
             }
         }
-        int res = 0;
-        for(int i=0;i<n;i++){
-            if(res<lis[i]) res = lis[i];
-        }
-        return res;
+        return dp[0][-1+1];
     }
 };
