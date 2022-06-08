@@ -1,6 +1,8 @@
 class Solution {
 public:
-    // this solution won't work. Best solution is nlogn.
+    // Best solution is nlogn using Binary Search.
+    // TC of following solution is O(n*n), SC - O(n*n);
+    
     int lengthOfLIS(vector<int>& nums) {
         vector<vector<int>> dp(nums.size()+1, vector<int>(nums.size()+1, 0)); // column of dp is n+1 because it will range from -1 to n-1;
         for(int i=nums.size()-1;i>=0;i--){
