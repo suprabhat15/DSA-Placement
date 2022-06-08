@@ -33,6 +33,6 @@ public:
                     dp[i][prev+1] = len;
             }
         }
-        return dp[0][-1+1];  // the answer will be stored at [0][-1].
+        return dp[0][-1+1];  // the answer will be stored at [0][-1]. +1 for handling -1 prevIndex.
     }
 };
