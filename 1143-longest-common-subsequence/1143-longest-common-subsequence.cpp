@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     //tabulation - O(m*n)
@@ -27,4 +28,31 @@ public:
        }
        return dp[m][n];
    }
+};
+*/
+class Solution {
+    public:
+      int lcshelper(int i,string &s1,int j, string &s2,vector<vector<int>> &dp){
+        if(i==s1.length() || j==s2.length())
+            return 0;
+        if(dp[i][j]!=-1)
+            return dp[i][j];
+
+        if(s1[i]==s2[j])
+            return dp[i][j]=1+ lcshelper(i+1,s1,j+1,s2,dp);
+        else
+        {
+            int op1= lcshelper(i+1,s1,j,s2,dp);
+            int op2= lcshelper(i,s1,j+1,s2,dp);
+
+            return dp[i][j]= max(op1,op2);
+        }
+    }
+    int longestCommonSubsequence(string s, string t) 
+    {
+        int n1=s.length();
+        int n2=t.length();
+        vector<vector<int>> dp(n1,vector<int>(n2,-1));
+        return lcshelper(0,s,0,t,dp);
+    }
 };
