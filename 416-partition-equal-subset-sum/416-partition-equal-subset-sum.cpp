@@ -1,5 +1,6 @@
-/*
-// With Recursion
+-----------------------------------------------------------------------------------------------------------------
+With Recursion - TC - O(2^n), SC - O(n);
+
 class Solution {
 public:
     bool solve(int idx, vector<int>& nums, int target){
@@ -23,6 +24,8 @@ public:
     }
 };
 */
+----------------------------------------------------------------------------------------------------------------------------------------------
+With Recursion + Memoization => TC - O(n*target), SC - O(n*target);
 
 class Solution {
 public:
