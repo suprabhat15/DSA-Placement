@@ -20,3 +20,14 @@ int findWays(vector<int> &num, int tar)
     vector<vector<int>> dp(num.size(), vector<int>(tar+1, -1));
     return solve(num.size()-1, num, tar, dp);
 }
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Check DP-18 for corner cases including 0 like {0, 0, 1}. In this case, there will be 4 ways to sum = 1.
+For tackling above corner case, we need to 
+1. remove the 7th line.
+2. add the following line - 
+    if(i == 0){
+      if(sum == 0 && arr[0] == 0) return 2; //cuz either we pick or notPick arr[0], there will be no impact on our ans. but count will increase.
+      if(sum == 0 || sum == arr[0]) return 1;
+      return 0;  // for all other cases.
+    }
+https://www.youtube.com/watch?v=zoilQD1kYSg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=19
