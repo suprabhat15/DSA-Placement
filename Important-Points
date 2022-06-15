@@ -4,5 +4,7 @@ RECURSION => Recursion + Memoization => Tabulation (Use base cases of Recursion 
 -------------------------------------------------------------
 For subsequences problems, use "pick & not-pick" with recursion.
 -------------------------------------------------------------
+If there are infinite number of supplies, multiple usage of same thing, then f(idx, T-coins[idx]) will be used. Here, idx is not changing to idx-1(that's the IMPORTANT
+OBSERVATION). Keeping idx means we are selecting the same coin/item again n again as per our requirement.
 
 
