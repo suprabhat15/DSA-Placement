@@ -16,7 +16,8 @@ public:
       }
         // for(auto x: dp) cout<<x<<" ";
         return dp[amount] > amount ? -1 : dp[amount];
-        
+      
+--------------------------------------------------------------------------
 // int Max = amount + 1;
 //         vector<int> dp(amount + 1, Max);
 //         dp[0] = 0;
@@ -30,8 +31,8 @@ public:
 //         return dp[amount] > amount ? -1 : dp[amount];
     }
 };
+---------------------------------------------------------------------------
 
-*/
 class Solution {
 public:
     int solve(int idx, vector<int>& coins, int target, vector<vector<int>>& dp){
@@ -57,5 +58,33 @@ public:
         int ans = solve(coins.size()-1, coins, target, dp);
         
         return ans >= 1e9 ? -1 : ans;
+    }
+};
+
+*/
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        
+        vector<vector<int>> dp(coins.size(), vector<int>(amount+1, 0));
+        
+        for(int value = 0; value <= amount; value++) {
+            if(value%coins[0] == 0) dp[0][value] = value/coins[0];
+            else dp[0][value] = 1e9;
+        }
+        
+        for(int idx = 1; idx < coins.size(); idx ++) {
+            for(int target=0; target<=amount; target++){
+                int notTake = dp[idx-1][target];
+        
+                int take = 1e9;
+                if(coins[idx]<=target) take = 1 + dp[idx][target-coins[idx]];
+
+                dp[idx][target] = min(notTake, take);
+            }
+        }
+    
+        
+        return dp[coins.size()-1][amount] >= 1e9 ? -1 : dp[coins.size()-1][amount];
     }
 };
