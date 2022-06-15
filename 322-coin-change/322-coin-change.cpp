@@ -18,19 +18,19 @@ public:
         return dp[amount] > amount ? -1 : dp[amount];
       
 --------------------------------------------------------------------------
-// int Max = amount + 1;
-//         vector<int> dp(amount + 1, Max);
-//         dp[0] = 0;
-//         for (int i = 1; i <= amount; i++) {
-//             for (int j = 0; j < coins.size(); j++) {
-//                 if (coins[j] <= i) {
-//                     dp[i] = min(dp[i], dp[i - coins[j]] + 1);
-//                 }
-//             }
-//         }
-//         return dp[amount] > amount ? -1 : dp[amount];
-    }
-};
+
+         int Max = amount + 1;
+         vector<int> dp(amount + 1, Max);
+         dp[0] = 0;
+         for (int i = 1; i <= amount; i++) {
+             for (int j = 0; j < coins.size(); j++) {
+                 if (coins[j] <= i) {
+                     dp[i] = min(dp[i], dp[i - coins[j]] + 1);
+                 }
+             }
+         }
+         return dp[amount] > amount ? -1 : dp[amount];
+         
 ---------------------------------------------------------------------------
 
 class Solution {
@@ -61,7 +61,8 @@ public:
     }
 };
 
-*/
+------------------------------------------------------------------------------------
+
 class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
@@ -86,5 +87,35 @@ public:
     
         
         return dp[coins.size()-1][amount] >= 1e9 ? -1 : dp[coins.size()-1][amount];
+    }
+};
+
+----------------------------------------------------------------------------------------
+*/
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        
+        vector<int> prev(amount+1, 0), curr(amount+1, 0);
+        
+        for(int value = 0; value <= amount; value++) {
+            if(value%coins[0] == 0) prev[value] = value/coins[0];
+            else prev[value] = 1e9;
+        }
+        
+        for(int idx = 1; idx < coins.size(); idx ++) {
+            for(int target=0; target<=amount; target++){
+                int notTake = prev[target];
+        
+                int take = 1e9;
+                if(coins[idx]<=target) take = 1 + curr[target-coins[idx]];
+
+                curr[target] = min(notTake, take);
+            }
+            prev = curr;
+        }
+    
+        
+        return prev[amount] >= 1e9 ? -1 : prev[amount];
     }
 };
