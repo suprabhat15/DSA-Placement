@@ -32,6 +32,9 @@ public:
          return dp[amount] > amount ? -1 : dp[amount];
          
 ---------------------------------------------------------------------------
+With Recursion => TC - EXPONENTIAL, SC - >> O(n) (way greater than Big O(n) )
+With Recursion + Memoization => TC - O(n*target), SC - O(n*target) + O(target) // when arr is of length 1 having only value 1 and target = 10000. 
+                                                                               // Then, target/arr[0] will be space complexity.
 
 class Solution {
 public:
@@ -62,6 +65,7 @@ public:
 };
 
 ------------------------------------------------------------------------------------
+Tabulation => TC - O(n*target), SC - O(n*target);
 
 class Solution {
 public:
@@ -69,9 +73,9 @@ public:
         
         vector<vector<int>> dp(coins.size(), vector<int>(amount+1, 0));
         
-        for(int value = 0; value <= amount; value++) {
-            if(value%coins[0] == 0) dp[0][value] = value/coins[0];
-            else dp[0][value] = 1e9;
+        for(int target = 0; target <= amount; target++) {
+            if(target%coins[0] == 0) dp[0][target] = target/coins[0];
+            else dp[0][target] = 1e9;
         }
         
         for(int idx = 1; idx < coins.size(); idx ++) {
