@@ -1,3 +1,6 @@
+https://leetcode.com/problems/minimum-cost-to-cut-a-stick/discuss/901997/C%2B%2B-Dynamic-Programming-or-INTUITIVE-or-GIVE-IT-A-READ-or
+--------------------------------------------------------------------------------------------------------------------------------------
+
 class Solution
 {  
 public:
