@@ -63,5 +63,26 @@ int unboundedKnapsack(int n, int W, vector<int> &profit, vector<int> &weight)
     return prev[W];
 }
 
+--------------------------------------------------------------------------------------------------------------
+1D Array Space Optimization => TC - O(n*weight), SC - O(weight);
+
+int unboundedKnapsack(int n, int W, vector<int> &profit, vector<int> &weight)
+{
+    vector<int> prev(W+1, 0);
+    
+    for(int w = 0; w<=W; w++) prev[w] = (w/weight[0])*profit[0];
+    
+    for(int idx = 1; idx<n; idx++){
+        for(int w=0; w<=W; w++){
+            int notTake = prev[w];
+            int take = 0;
+            if(weight[idx] <= w) take = profit[idx] + prev[w-weight[idx]];
+
+            prev[w] = max(take, notTake);
+        }
+    }
+    return prev[W];
+}
+
   
 
