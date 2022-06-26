@@ -14,7 +14,6 @@ public:
     void flatten(TreeNode* root) {
         if(!root)return;
         flatten(root->left);
-        flatten(root->right);
         TreeNode* temp = root->right;
         root->right = root->left;
         root->left = nullptr;
@@ -22,5 +21,7 @@ public:
             root=root->right;
         }
         root->right = temp;
+        flatten(root->right);
+        
     }
 };
